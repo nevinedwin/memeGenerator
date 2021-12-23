@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+}
+.nav-cont{
+    width: 550px;
+    height: 65px;
+    margin: 0;
+    background-color: yellowgreen;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+}
+
+.nav-title{
+    font-weight: bold;
+    font-size: 21px;
+    line-height: 24px;
+    letter-spacing: -0.1em;
+}
+
+.nav-des{
+    color: white;
+    text-align: right;
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 500;
+}
