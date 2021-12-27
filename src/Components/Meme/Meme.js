@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Meme.css'
 
-function Meme(props) {
+function Meme() {
 
     const [meme, setMeme] = useState({
         topText: "",
@@ -9,11 +9,26 @@ function Meme(props) {
         randomImage: "https://i.imgflip.com/3i7p.jpg"
     })
 
+    const [allMeme, setAllMeme] = useState([])
+
+    useEffect(() => {
+        fetch("https://api.imgflip.com/get_memes")
+            .then(res => res.json())
+            .then(data => setAllMeme(data.data.memes))
+    }, [])
+
+    // we can write the above useEffect like this also using async
+    // useEffect(async () => {
+    //     const res = await fetch("https://api.imgflip.com/get_memes")
+    //     const data = await res.json()
+    //     setAllMeme(data.data.memes)
+
+    // }, [])
+
 
     function getImage() {
-        const memeData = props.dataSet.data.memes
-        let num = Math.floor(Math.random() * memeData.length)
-        const { url } = memeData[num]
+        let num = Math.floor(Math.random() * allMeme.length)
+        const { url } = allMeme[num]
         setMeme((prev) => {
             return (
                 {
